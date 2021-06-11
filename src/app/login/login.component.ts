@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { Uinfo } from '../models/uinfo';
 import { UsersService } from '../users/users.service';
 
@@ -9,12 +10,12 @@ import { UsersService } from '../users/users.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent /*implements OnInit*/ {
   formLogin: FormGroup;
 
   constructor(
     formBuilder: FormBuilder,
-    private userService: UsersService,
+    public user_service: UsersService,
   ) {
     this.formLogin = formBuilder.group({
       username: ['', Validators.required],
@@ -28,10 +29,11 @@ export class LoginComponent implements OnInit {
       password: this.formLogin.value.password,
     };
 
-    this.userService.loginServ(userLogin);
+    this.user_service.loginServ(userLogin);
   }
 
-  ngOnInit(): void {
-  }
+//  ngOnInit(): void {
+  //}
+
 
 }
