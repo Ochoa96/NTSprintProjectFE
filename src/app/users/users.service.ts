@@ -8,24 +8,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UsersService {
+  API_URL: string = "https://localhost:44376";
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  loginServ(user: Uinfo){
-    this.http.post("https://localhost:44376/api/account/login", user)
-      .subscribe(response => {
-        const token = (<any>response).token;
-        console.log("jwt", token);
-        localStorage.setItem("jwt",token);
-        this.router.navigate(["/"]);
-      }, err => {
-        console.log("Invalid login", err);
-      });
-  }/*
-  constructor(private http: HttpClient) {}
+  login(user: Uinfo){
+    return this.http.post(this.API_URL + "api/account/login", user)
+  }
 
-
-  login(user: any): Observable<any> {
-    return this.http.post("https://localhost:44376/api/account/login", user);
-  }*/
+  register(user: Uinfo){
+    return this.http.post(this.API_URL + "api/account/create", user)
+  }
 }

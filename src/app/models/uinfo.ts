@@ -1,4 +1,4 @@
 export interface Uinfo {
-  username: string;
+  user: string;
   password: string;
 }
