@@ -18,6 +18,9 @@ export class NotaService {
   getAllNotas(){
     return this.http.get<Nota[]>(this.API_URL + "/api/notas");
   }
+  deleteAllNotas(){
+    return this.http.delete(this.API_URL + "/api/notas");
+  }
 }
 
 

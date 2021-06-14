@@ -1,12 +1,29 @@
-<h1 style="margin-top:100px">Welcome {{this.user_service.getUser()}}</h1>
+
+<div class="home-container">
+  <div class="home-page">
+    <h1>Welcome {{this.user_service.getUser()}}</h1>
+    <h3>You are Logged In</h3>
+    <mat-form-field>
+      <mat-label>Leave a note (Max. 10 notes)</mat-label>
+      <textarea matInput [(ngModel)]="nota" name="nota"></textarea>
+    </mat-form-field>
+      <button [disabled] = "notas.length > 10" class="btn-save-nota" (click)="saveNotas()">Save Nota</button>
+  </div>
+  <div class="home-notas-container">
+    <div class="btn-main" >
+      <button class="btn-log-out" (click) = "deleteNotas()">Delete All Notes</button>
+      <button class="btn-log-out"(click)="logout()">Log Out</button>
+    </div>
+    <div style="margin-top: 25px" *ngIf="notas.length != 0">
+      <ul>
+        <li *ngFor="let nota of notas">
+          {{nota.nota}} {{nota.notaId}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 
-<h3>You are Logged In</h3>
 
-<button (click)="logout()">Log Out</button>
-<textarea [(ngModel)]="nota" ></textarea>
-<button (click)="saveNotas()">Guardar</button>
 
-<ul *ngIf="notas.length != 0">
-  <li *ngFor="let nota of notas">{{nota.nota}} {{nota.notaId}}</li>
-</ul>

@@ -1,40 +1,100 @@
 
 
+.home-container{
+  margin-top: 2.5rem;
+  margin-left: 5%;
+  margin-right: 5%;
+  height: 360px;
+  display: flex;
+}
+.home-page{
+  width: 35%;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 2rem 1.5rem;
+  //margin: inherit;
+  border-radius: 2.5rem;
+  background-color: #ffffff;
+  box-shadow: 13px 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
+  color: black;
+  margin-top: 2.5rem;
+  flex-direction: row;
+}
+.home-page .btn-save-nota{
+  border: 2px solid#3545AF;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.875rem;
+  color: #DD0031;
+  font-weight: bold;
+  background-color: #ffffff;;
+  width: 100%;
+  display: block;
+  padding: 0.875rem 1rem;
+  border-radius: 1.5rem;
+  cursor: pointer;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  margin-left: 0;
+  flex-direction: row;
+}
+.home-notas-container .btn-log-out{
+  border: 2px solid#3545AF;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.875rem;
+  color: #DD0031;
+  font-weight: bold;
+  background-color: #ffffff;;
+  width: 100%;
+  display: block;
+  padding: 0.875rem 1rem;
+  border-radius: 1.5rem;
+  cursor: pointer;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  margin-left: inherit;
+  flex-direction: row;
+  position:relative;
+}
+.home-notas-container{
+  flex-direction: row;
+  margin-top: 2.5rem;
+  margin-right: 0;
+  margin-left: 80px;
+  width: 40%;
+}
+.mat-form-field{
+  margin: 0.875rem 0;
+  width: 100%;
+}
+
 h1{
   font-weight: 6000;
   font-style: initial;
   color: #DD0031;
-  margin-left: 5.7%;
 }
 h3{
   font-weight: 600;
   font-style: initial;
   letter-spacing: 0.15em;
-  color: #eca8a8;
+  color: #3545AF;
   margin-left: 1%;
 }
-.formHome{
-  padding: 3rem;
-  margin-top: 7.5rem;
-  margin-left: 40%;
-}
-.formHome button{
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  border: 2px solid #DD0031;
-  font-size: 0.875rem;
-  color: #DD0031;
-  font-weight: bold;
-  background-color: #ffffff;
-  width: 25%;
-  display: block;
-  padding: 0.875rem 1rem;
-  border-radius: 1.5rem;
-  box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff;
-  cursor: pointer;
-}
-.formHome button:hover{
-  background-color: #DD0031;
+.home-notas-container .btn-log-out:hover{
+  background-color: #3545AF;
   color:#ffffff;
   box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff;
 }
+.home-page .btn-save-nota:hover{
+  background-color: #3545AF;
+  color:#ffffff;
+  box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff;
+}
+.btn-main{
+  display: flex;
+  margin-left: 10px;
+}
+.home-notas-container .list-notas{
+  margin-left: inherit;
+}
+

@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit, OnDestroy{
   user_service: UsersService;
   notasSubscription: Subscription;
   guardarSubscription: Subscription;
+  deleteSubscription: Subscription;
   notas : Nota[];
   nota: string = "";
 
@@ -22,6 +23,7 @@ export class HomeComponent implements OnInit, OnDestroy{
     this.user_service = us;
     this.notasSubscription = new Subscription();
     this.guardarSubscription = new Subscription();
+    this.deleteSubscription = new Subscription();
     this.notas = new Array<Nota>();
   }
 
@@ -32,6 +34,7 @@ export class HomeComponent implements OnInit, OnDestroy{
   ngOnDestroy(): void {
     this.guardarSubscription.unsubscribe();
     this.notasSubscription.unsubscribe();
+    this.deleteSubscription.unsubscribe();
   }
 
   logout(){
@@ -55,5 +58,14 @@ export class HomeComponent implements OnInit, OnDestroy{
         this.notas = [];
       }
     )
+  }
+
+  deleteNotas(){
+    this.deleteSubscription = this.notasService.deleteAllNotas().subscribe(
+      response => { this.notas = []; },
+      err =>{
+        console.log(err);
+      }
+    );
   }
 }
