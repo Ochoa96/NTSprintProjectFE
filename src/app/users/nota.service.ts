@@ -7,19 +7,19 @@ import { Nota } from '../models/nota';
 })
 export class NotaService {
 
-  API_URL: string = 'http://localhost:13105';
+  API_URL: string = 'http://localhost:13105/';
   private user: any;
   constructor(private http: HttpClient) { }
 
   createNota(nota: any){
     const httpOptions = { headers: new HttpHeaders({'Content-Type':  'application/json' }) };
-    return this.http.post<Nota>(this.API_URL + "/api/notas", JSON.stringify(nota), httpOptions);
+    return this.http.post<Nota>(this.API_URL + "api/notas", JSON.stringify(nota), httpOptions);
   }
   getAllNotas(){
-    return this.http.get<Nota[]>(this.API_URL + "/api/notas");
+    return this.http.get<Nota[]>(this.API_URL + "api/notas");
   }
   deleteAllNotas(){
-    return this.http.delete(this.API_URL + "/api/notas");
+    return this.http.delete(this.API_URL + "api/notas");
   }
 }
 
