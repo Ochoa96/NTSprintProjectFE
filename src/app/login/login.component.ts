@@ -29,6 +29,8 @@ export class LoginComponent implements OnDestroy {
   }
 
   login() {
+
+    this.errors = "";
     const userLogin: Uinfo = {
       user: this.formLogin.value.username,
       password: this.formLogin.value.password,
@@ -39,7 +41,9 @@ export class LoginComponent implements OnDestroy {
       const token = (<any>response).token;
       console.log("jwt", token);
       localStorage.setItem("jwt",token);
+      this.user_service.setUser(userLogin.user);
       this.router.navigate(["/home"]);
+      this.errors = "";
     }, err => {
       console.log("Invalid login", err);
       this.errors = JSON.stringify(err);
@@ -49,6 +53,4 @@ export class LoginComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.loginSubscription.unsubscribe()
   }
-
-
 }

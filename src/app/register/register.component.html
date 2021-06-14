@@ -3,6 +3,9 @@
 <div class="register">
   <form class="custom-form" [formGroup]="formCreate" (ngSubmit)="register()">
     <h1><span class="bordeh1">Register</span></h1>
+    <div *ngIf="errors != ''" style="color: red;">
+      Invalid register attempt
+    </div>
       <mat-form-field class="input-register-password">
         <mat-label>Username</mat-label>
         <input matInput type="text" formControlName="username">

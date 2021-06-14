@@ -12,6 +12,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input'
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { JwtModule } from '@auth0/angular-jwt';
+import { AuthGuard } from './helper/auth.guard';
+
+export function tokenGetter() {
+  return localStorage.getItem("jwt");
+}
 
 @NgModule({
   declarations: [
@@ -28,9 +34,16 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ["localhost:44376"],
+        blacklistedRoutes: []
+      }
+    })
   ],
-  providers: [HttpClientModule,],
+  providers: [HttpClientModule, AuthGuard],
   schemas:[
     CUSTOM_ELEMENTS_SCHEMA
   ],

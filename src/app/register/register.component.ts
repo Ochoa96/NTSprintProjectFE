@@ -28,6 +28,7 @@ export class RegisterComponent implements OnDestroy {
   }
 
   register() {
+    this.errors = "";
     const userCreate: Uinfo = {
       user: this.formCreate.value.username,
       password: this.formCreate.value.password,
@@ -37,17 +38,15 @@ export class RegisterComponent implements OnDestroy {
       const token = (<any>response).token;
       console.log("jwt", response);
       localStorage.setItem("jwt",token);
+      this.user_service.setUser(userCreate.user);
       this.router.navigate(["/home"]);
     }, err => {
       console.log("Invalid Create", err);
       this.errors = JSON.stringify(err);
     });
-
-
   }
 
   ngOnDestroy(): void {
     this.createSubscription.unsubscribe()
   }
-
 }
