@@ -39,6 +39,7 @@ export class HomeComponent implements OnInit, OnDestroy{
 
   logout(){
     localStorage.removeItem("jwt");
+    localStorage.removeItem("user");
     this.router.navigate(["login"]);
   }
 
